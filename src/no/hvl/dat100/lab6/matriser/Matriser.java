@@ -4,32 +4,51 @@ public class Matriser {
 
 	// a)
 	public static void skrivUt(int[][] matrise) {
-		
-		// TODO
-		throw new UnsupportedOperationException("skrivUt ikke implementert");
+		for (int[] subArray: matrise) {
+			for(int el: subArray) {
+				System.out.print(el + " ");
+			}
+			System.out.println();
+		}
 	}
 
 	// b)
 	public static String tilStreng(int[][] matrise) {
-
-		// TODO
-		throw new UnsupportedOperationException("tilStreng ikke implementert");
-		
+		StringBuilder utTxt = new StringBuilder("");
+		for (int[] subMatrix : matrise) {
+			for (int el: subMatrix) {
+				utTxt.append(el).append(" ");
+			}
+			utTxt.append("\n");
+		}
+		return utTxt.toString();
 	}
 
 	// c)
 	public static int[][] skaler(int tall, int[][] matrise) {
 		
-		// TODO
-		throw new UnsupportedOperationException("skaler ikke implementert");
-	
+		int[][] multiplisertMatrise = new int[matrise[0].length][matrise[1].length];
+		
+		for (int i = 0; i < matrise.length; i++) {
+			for (int j = 0; j < matrise[i].length; j++) {
+				multiplisertMatrise[i][j] = matrise[i][j] * tall;
+			}
+		}
+		
+		return multiplisertMatrise;
 	}
 
 	// d)
 	public static boolean erLik(int[][] a, int[][] b) {
 
-		// TODO
-		throw new UnsupportedOperationException("erLik ikke implementert");
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				if (a[i][j] != b[i][j]) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 	
 	// e)
