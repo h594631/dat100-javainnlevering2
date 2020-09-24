@@ -28,7 +28,7 @@ public class Matriser {
 	// c)
 	public static int[][] skaler(int tall, int[][] matrise) {
 		
-		int[][] multiplisertMatrise = new int[matrise[0].length][matrise[1].length];
+		int[][] multiplisertMatrise = new int[matrise.length][matrise[0].length];
 		
 		for (int i = 0; i < matrise.length; i++) {
 			for (int j = 0; j < matrise[i].length; j++) {
