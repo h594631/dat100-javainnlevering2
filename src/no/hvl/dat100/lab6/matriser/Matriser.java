@@ -90,7 +90,7 @@ public class Matriser {
 	}
 
 	
-	// f) hjelpemetode:
+	// f) hjelpemetoder:
 	public static int multipliserCelle(int[][] a, int[][] b, int rad, int kol) {
 		int sum = 0;
 		for (int i = 0; i < b.length; i++) {
@@ -99,16 +99,26 @@ public class Matriser {
 		return sum;
 	}
 	
+	public static boolean multipliserbarMatrise(int[][]a, int[][] b) {
+		for(int i = 0; i < a.length; i++) {
+			if(b[i].length != a.length) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	// f)
 	public static int[][] multipliser(int[][] a, int[][] b) {
-		if (a.length == b[0].length) {
+		if (multipliserbarMatrise(a, b)) {
+		
 			int[][] multiplisertMatrise = new int[a.length][b[0].length];
+
 			for (int rad = 0; rad < multiplisertMatrise.length; rad++) {
 				for (int kol = 0; kol < multiplisertMatrise[rad].length; kol++) {
 					multiplisertMatrise[rad][kol] = multipliserCelle(a, b, rad, kol);
 				}
 			}
-			
 			return multiplisertMatrise;
 		}
 		else {
