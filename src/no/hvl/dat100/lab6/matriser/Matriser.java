@@ -1,5 +1,6 @@
 package no.hvl.dat100.lab6.matriser;
 
+
 public class Matriser {
 
 	// a)
@@ -51,19 +52,67 @@ public class Matriser {
 		return true;
 	}
 	
+	// e) hjelpemetode:
+		public static boolean erKvadratiskMatrise(int[][] matrise) {
+			for (int[] kolonne : matrise) {
+				if(kolonne.length != matrise.length) {
+					return false;
+				}
+			}
+			return true;
+		}
+	
 	// e)
 	public static int[][] speile(int[][] matrise) {
-
-		// TODO
-		throw new UnsupportedOperationException("speile ikke implementert");
-	
+		if(erKvadratiskMatrise(matrise)) {
+			
+			int[][] speiletMatrise = new int[matrise.length][matrise[0].length];
+			
+			for (int i = 0; i < matrise.length; i++) {
+				for (int j = 0; j < matrise[i].length; j++) {
+					speiletMatrise[i][j] = matrise[i][j];
+				}
+			}
+			
+			for (int i = 0; i < speiletMatrise.length; i++) {
+				for (int j = 0; j < i; j++) {
+					int temp = speiletMatrise[i][j];
+					speiletMatrise[i][j] = speiletMatrise[j][i];
+					speiletMatrise[j][i] = temp;
+				}
+			}
+			
+			return speiletMatrise;
+		} else {
+			return null;
+		}
+		
 	}
 
+	
+	// f) hjelpemetode:
+	public static int multipliserCelle(int[][] a, int[][] b, int rad, int kol) {
+		int sum = 0;
+		for (int i = 0; i < b.length; i++) {
+			sum += a[rad][i] * b[i][kol];
+		}
+		return sum;
+	}
+	
 	// f)
 	public static int[][] multipliser(int[][] a, int[][] b) {
-
-		// TODO
-		throw new UnsupportedOperationException("multipliser ikke implementert");
-	
+		if (a.length == b[0].length) {
+			int[][] multiplisertMatrise = new int[a.length][b[0].length];
+			for (int rad = 0; rad < multiplisertMatrise.length; rad++) {
+				for (int kol = 0; kol < multiplisertMatrise[rad].length; kol++) {
+					multiplisertMatrise[rad][kol] = multipliserCelle(a, b, rad, kol);
+				}
+			}
+			
+			return multiplisertMatrise;
+		}
+		else {
+			return null;
+		}
 	}
 }
